@@ -13,7 +13,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,400;1,6..96,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --paper:#FBF7EF; --paper-2:#F4ECDC; --card:#FEFCF7; --ink:#2B2521; --ink-soft:#4A4038;
@@ -22,7 +22,7 @@
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{background:var(--paper); color:var(--ink); font-family:"EB Garamond",Georgia,serif; font-size:19px; line-height:1.7; -webkit-font-smoothing:antialiased}
-  h1,h2,h3,h4{font-family:"Fraunces",serif; font-weight:500; line-height:1.14; text-wrap:balance}
+  h1,h2,h3,h4{font-family:"Bodoni Moda",Didot,"Times New Roman",serif; font-weight:500; line-height:1.14; text-wrap:balance; font-optical-sizing:auto}
   .em{font-style:italic; color:var(--bronze)}
   .script{font-family:"Tangerine",cursive; font-weight:700; font-style:normal; color:var(--bronze); line-height:1}
   .hero h1 .script{display:block; font-size:2.05em; margin-top:.12em}
@@ -31,22 +31,49 @@
   .reveal{opacity:0; transform:translateY(20px); transition:opacity .9s ease, transform .9s ease}
   .reveal.in{opacity:1; transform:none}
 
-  /* HERO */
-  .hero{position:relative; min-height:92vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
-    text-align:center; overflow:hidden; padding:80px 32px;
+  /* HERO — editorial split with a before/after restoration reveal */
+  .hero{position:relative; min-height:92vh; display:flex; align-items:center; overflow:hidden; padding:88px 32px 72px;
     background:radial-gradient(120% 90% at 50% 0%, #FEFCF7 0%, var(--paper) 42%, var(--paper-2) 100%)}
-  .hero::before{content:""; position:absolute; top:-30%; left:50%; transform:translateX(-50%); width:900px; height:900px; border-radius:50%;
+  .hero::before{content:""; position:absolute; top:-34%; left:32%; transform:translateX(-50%); width:900px; height:900px; border-radius:50%;
     background:radial-gradient(circle, rgba(201,162,75,.18) 0%, rgba(201,162,75,0) 60%); animation:breathe 9s ease-in-out infinite}
   @keyframes breathe{0%,100%{opacity:.7; transform:translateX(-50%) scale(1)} 50%{opacity:1; transform:translateX(-50%) scale(1.06)}}
-  .hero>*{position:relative; z-index:1}
-  .wordmark{font-family:"Fraunces",serif; font-size:16px; letter-spacing:.5em; color:var(--bronze); text-indent:.5em; margin-bottom:6px}
-  .wordmark-sub{font-style:italic; font-size:15px; color:var(--bronze-soft); margin-bottom:48px}
-  .hero h1{font-size:clamp(40px,6.6vw,80px); letter-spacing:-.01em}
-  .hero .lede{max-width:620px; margin:26px auto 0; font-size:21px; color:var(--ink-soft); line-height:1.66}
-  .cta{display:inline-block; margin-top:40px; padding:16px 42px; background:var(--bronze); color:var(--paper); text-decoration:none;
+  .hero-inner{position:relative; z-index:1; max-width:1180px; margin:0 auto; width:100%;
+    display:grid; grid-template-columns:1fr 1.04fr; gap:58px; align-items:center}
+  .hero-copy{text-align:left}
+  .wordmark{font-family:"Bodoni Moda",Didot,serif; font-size:16px; letter-spacing:.5em; color:var(--bronze); text-indent:.5em; margin-bottom:6px}
+  .wordmark-sub{font-style:italic; font-size:15px; color:var(--bronze-soft); margin-bottom:30px}
+  .hero h1{font-size:clamp(38px,5.2vw,70px); letter-spacing:-.01em; font-weight:600}
+  .hero h1 .script{display:block; font-size:2.05em; margin-top:.05em; font-weight:400}
+  .hero .lede{max-width:520px; margin:24px 0 0; font-size:20px; color:var(--ink-soft); line-height:1.62}
+  .cta{display:inline-block; margin-top:34px; padding:16px 42px; background:var(--bronze); color:var(--paper); text-decoration:none;
     font-family:"EB Garamond",serif; font-size:18px; letter-spacing:.12em; text-transform:uppercase; border-radius:2px;
     transition:transform .25s ease, box-shadow .25s ease, background .25s ease; box-shadow:0 10px 30px rgba(122,78,34,.22)}
   .cta:hover{transform:translateY(-2px); background:#8A5827; box-shadow:0 16px 40px rgba(122,78,34,.3)}
+
+  /* before/after reveal component */
+  .photo-frame{background:#FEFCF7; padding:14px; border-radius:6px; border:1px solid var(--line); box-shadow:0 34px 74px rgba(43,32,21,.26)}
+  .reveal-photo{position:relative; width:100%; aspect-ratio:960/740; overflow:hidden; border-radius:3px;
+    user-select:none; -webkit-user-select:none; touch-action:none; cursor:ew-resize}
+  .ba-img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block}
+  .ba-after{position:absolute; inset:0; clip-path:inset(0 50% 0 0); will-change:clip-path}
+  .ba-after img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block}
+  .ba-handle{position:absolute; top:0; bottom:0; left:50%; width:2px; margin-left:-1px; z-index:3;
+    background:rgba(255,252,244,.9); box-shadow:0 0 14px rgba(0,0,0,.4)}
+  .ba-handle span{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:46px; height:46px; border-radius:50%;
+    background:var(--gold); color:var(--deep); display:flex; align-items:center; justify-content:center; font-size:20px;
+    box-shadow:0 5px 16px rgba(0,0,0,.32); letter-spacing:-2px; font-family:"EB Garamond",serif}
+  .ba-tag{position:absolute; bottom:14px; z-index:2; font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+    padding:5px 12px; border-radius:20px; background:rgba(22,15,8,.55); color:#F0E6D2; -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px)}
+  .ba-tag-l{left:14px} .ba-tag-r{right:14px}
+  .photo-cap{text-align:center; margin-top:18px; font-size:15px; font-style:italic; color:var(--bronze-soft)}
+
+  @media(max-width:900px){
+    .hero{padding:72px 24px 56px}
+    .hero-inner{grid-template-columns:1fr; gap:40px; max-width:560px}
+    .hero-copy{text-align:center}
+    .hero .lede{margin-left:auto; margin-right:auto}
+    .hero::before{left:50%}
+  }
 
   section{padding:96px 0}
   .label{text-align:center; font-size:14px; letter-spacing:.3em; text-transform:uppercase; color:var(--bronze-2); margin-bottom:20px}
@@ -78,7 +105,7 @@
   .g h4{font-size:20px; color:var(--bronze); margin-bottom:7px}
   .g p{font-size:16px; line-height:1.55; color:var(--ink-soft)}
   .price-note{text-align:center; margin-top:44px; font-size:20px; color:var(--ink-soft)}
-  .price-note b{font-family:"Fraunces",serif; color:var(--bronze); font-weight:500}
+  .price-note b{font-family:"Bodoni Moda",Didot,serif; color:var(--bronze); font-weight:600}
 
   /* TRUST */
   .trust{background:var(--paper-2)}
@@ -134,13 +161,29 @@
 <body>
 
   <header class="hero">
-    <div class="wordmark">HERITAGE ALBUMS</div>
-    <div class="wordmark-sub">Photo &amp; film legacy, beautifully kept.</div>
-    <h1>Your family's story,<br><span class="script">kept forever.</span></h1>
-    <p class="lede">The photographs and old tapes in your family's boxes hold a hundred years of faces
-      and love. We bring them back to life &mdash; and turn them into a film your family will keep
-      for generations.</p>
-    <a class="cta" href="#inquire">Start your family's film</a>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="wordmark">HERITAGE ALBUMS</div>
+        <div class="wordmark-sub">Photo &amp; film legacy, beautifully kept.</div>
+        <h1>Your family's story,<br><span class="script">kept forever.</span></h1>
+        <p class="lede">The photographs and old tapes in your family's boxes hold a hundred years of faces
+          and love. We bring them back to life &mdash; and turn them into a film your family will keep
+          for generations.</p>
+        <a class="cta" href="#inquire">Start your family's film</a>
+      </div>
+      <div class="hero-photo">
+        <div class="photo-frame">
+          <div class="reveal-photo" id="ba">
+            <img class="ba-img" src="heritage-before.jpg" alt="A faded, scratched family photograph from around 1900, before restoration">
+            <div class="ba-after"><img src="heritage-after.jpg" alt="The same 1900 family photograph after restoration — clean, warm, and clear"></div>
+            <span class="ba-tag ba-tag-l">Faded original</span>
+            <span class="ba-tag ba-tag-r">Restored by hand</span>
+            <div class="ba-handle" aria-hidden="true"><span>&#8249;&#8250;</span></div>
+          </div>
+        </div>
+        <p class="photo-cap">Drag the slider &mdash; a real photograph, brought back to life.</p>
+      </div>
+    </div>
   </header>
 
   <section class="intro">
@@ -229,6 +272,23 @@
   <script>
     const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in'); io.unobserve(e.target);}});},{threshold:.12});
     document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3*80)+'ms'; io.observe(el);});
+
+    // before/after restoration reveal
+    (function(){
+      var ba=document.getElementById('ba'); if(!ba) return;
+      var after=ba.querySelector('.ba-after'), handle=ba.querySelector('.ba-handle');
+      function set(p){ p=Math.max(2,Math.min(98,p)); after.style.clipPath='inset(0 '+(100-p)+'% 0 0)'; handle.style.left=p+'%'; }
+      function animateTo(target,dur){ var start=parseFloat(handle.style.left)||50,t0=null;
+        requestAnimationFrame(function fr(ts){ if(!t0)t0=ts; var p=Math.min(1,(ts-t0)/dur); var e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2; set(start+(target-start)*e); if(p<1)requestAnimationFrame(fr); }); }
+      var dragging=false;
+      function pos(e){ var r=ba.getBoundingClientRect(); var cx=e.touches?e.touches[0].clientX:e.clientX; set((cx-r.left)/r.width*100); }
+      ba.addEventListener('pointerdown',function(e){dragging=true; try{ba.setPointerCapture(e.pointerId);}catch(_){} pos(e); e.preventDefault();});
+      ba.addEventListener('pointermove',function(e){ if(dragging){ pos(e); } });
+      window.addEventListener('pointerup',function(){dragging=false;});
+      set(50);
+      var rm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(!rm){ setTimeout(function(){animateTo(66,650);},800); setTimeout(function(){animateTo(34,750);},1600); setTimeout(function(){animateTo(50,600);},2500); }
+    })();
     document.getElementById('inquiryForm').addEventListener('submit',function(e){
       e.preventDefault();
       const g=id=>encodeURIComponent(document.getElementById(id).value||'');
