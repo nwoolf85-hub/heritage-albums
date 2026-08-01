@@ -150,6 +150,33 @@
   .footer-seal img{width:132px; height:auto; opacity:.96}
   .footer-seal .fine{margin-top:16px}
 
+  /* GLEAM — a subtle light that rakes left-to-right across the name, brightening then fading */
+  @keyframes gleam{
+    0%{background-position:120% 50%}
+    45%{background-position:-40% 50%}
+    100%{background-position:-40% 50%}
+  }
+  .gleam{
+    background:linear-gradient(100deg,
+      var(--bronze) 0%, var(--bronze) 42%,
+      #E4C170 47%, #FBEFC8 50%, #E4C170 53%,
+      var(--bronze) 58%, var(--bronze) 100%);
+    background-size:260% 100%;
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    animation:gleam 6.5s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce){
+    .gleam{animation:none; background:none; -webkit-text-fill-color:var(--bronze); color:var(--bronze)}
+  }
+  /* the same light sweeping across the footer seal, masked to the medallion */
+  .footer-seal .seal-wrap{position:relative; display:inline-block; line-height:0}
+  .footer-seal .seal-wrap::after{content:""; position:absolute; inset:0; pointer-events:none; mix-blend-mode:screen;
+    background:linear-gradient(100deg, transparent 42%, rgba(255,246,214,.6) 50%, transparent 58%); background-size:260% 100%;
+    -webkit-mask:url('tfw-seal-light-ink.png') center/contain no-repeat; mask:url('tfw-seal-light-ink.png') center/contain no-repeat;
+    animation:gleam 6.5s ease-in-out infinite}
+  @media (prefers-reduced-motion: reduce){ .footer-seal .seal-wrap::after{animation:none; opacity:0} }
+
   /* PAYMENT */
   .pay{background:
       radial-gradient(38% 44% at 12% 15%, rgba(201,162,75,.13), transparent 66%),
@@ -179,7 +206,7 @@
       <div class="hero-copy">
         <div class="wordmark">HERITAGE ALBUMS</div>
         <div class="wordmark-sub">Photo &amp; film legacy, beautifully kept.</div>
-        <h1>Your family's story,<br><span class="script">kept forever.</span></h1>
+        <h1>Your family's story,<br><span class="script gleam">kept forever.</span></h1>
         <p class="lede">The photographs and old tapes in your family's boxes hold a hundred years of faces
           and love. We bring them back to life &mdash; and turn them into a film your family will keep
           for generations.</p>
@@ -252,7 +279,7 @@
             New Jersey &mdash; and your originals never leave careful, local hands.</p>
           <div class="sig">
             <div class="lead">Personally,</div>
-            <div class="nm">Thomas F. Woolf</div>
+            <div class="nm gleam">Thomas F. Woolf</div>
             <div class="sm">Heritage Films &middot; New Jersey</div>
           </div>
         </div>
@@ -289,7 +316,7 @@
       </form>
       <div class="footer-seal">
         <div class="divider"></div>
-        <img src="tfw-seal-light-ink.png" alt="Thomas F. Woolf, Heritage Films - maker's seal" width="132" height="132">
+        <div class="seal-wrap"><img src="tfw-seal-light-ink.png" alt="Thomas F. Woolf, Heritage Films - maker's seal" width="132" height="132"></div>
         <div class="fine">A Woolf Ventures Service &middot; New Jersey</div>
       </div>
     </div>
