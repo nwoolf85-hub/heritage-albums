@@ -185,13 +185,12 @@
   @media (prefers-reduced-motion: reduce){ .footer-seal .seal-wrap::after{animation:none; opacity:0} }
 
   /* THE CRAFTSMAN — dad, full-width cinematic band */
-  .craftsman{position:relative; overflow:hidden; background:#1a120a; padding:0}
+  .craftsman{position:relative; overflow:hidden; background:#1a120a; padding:0; min-height:680px}
   .craftsman .cr-photo{position:absolute; inset:0; background:url('tom-hero.jpg') center 42%/cover no-repeat}
-  .craftsman .cr-scrim{position:absolute; inset:0; background:linear-gradient(90deg, rgba(20,14,6,.30) 0%, rgba(20,14,6,0) 30%, rgba(251,247,239,.1) 60%, rgba(251,247,239,.64) 100%)}
-  .craftsman .inner{position:relative; z-index:1; max-width:1180px; margin:0 auto; min-height:680px; display:flex; align-items:center; padding:64px 40px}
-  .craftsman .cr-txt{margin-left:auto; width:min(50%,540px); text-align:right}
+  .craftsman .cr-scrim{position:absolute; inset:0; background:linear-gradient(90deg, rgba(20,14,6,.30) 0%, rgba(20,14,6,0) 34%, rgba(251,247,239,.12) 58%, rgba(251,247,239,.72) 100%)}
+  .craftsman .cr-txt{position:absolute; right:6%; top:50%; transform:translateY(-50%); z-index:2; width:min(42%,460px); text-align:right}
   .craftsman .cr-k{font-family:"Bodoni Moda",Didot,serif; font-size:13px; letter-spacing:.34em; text-transform:uppercase; color:var(--bronze); margin-bottom:12px}
-  .craftsman .cr-nm{font-family:"Bodoni Moda",Didot,serif; font-weight:600; font-size:clamp(34px,5vw,60px); color:var(--ink); line-height:1.02}
+  .craftsman .cr-nm{font-family:"Bodoni Moda",Didot,serif; font-weight:600; font-size:clamp(30px,4vw,52px); color:var(--ink); line-height:1.02}
   .craftsman .cr-rule{width:120px; height:1px; background:linear-gradient(90deg,transparent,var(--bronze-2)); margin:18px 0 16px auto}
   .craftsman .cr-tag{font-family:"EB Garamond",serif; font-style:italic; font-size:clamp(16px,1.8vw,21px); color:var(--ink-soft); line-height:1.5}
 
@@ -213,7 +212,7 @@
   .trustbar b{color:var(--bronze); font-weight:400}
 
   @media(max-width:820px){ .grid{grid-template-columns:1fr; max-width:420px; margin-left:auto; margin-right:auto} .row{grid-template-columns:1fr} .pay-cards{grid-template-columns:1fr; max-width:420px; margin-left:auto; margin-right:auto} .trust .card{grid-template-columns:1fr} .trust .ph{min-height:320px} section{padding:72px 0}
-    .craftsman{padding:0} .craftsman .inner{min-height:auto; align-items:flex-end; padding:280px 24px 44px} .craftsman .cr-txt{width:100%; text-align:center} .craftsman .cr-rule{margin-left:auto;margin-right:auto} .craftsman .cr-photo{background-position:center 14%} .craftsman .cr-scrim{background:linear-gradient(180deg, rgba(20,14,6,.15) 0%, rgba(20,14,6,0) 32%, rgba(251,247,239,.92) 72%)} }
+    .craftsman{min-height:auto; padding-top:300px} .craftsman .cr-txt{position:static; transform:none; width:auto; text-align:center; padding:0 24px 44px} .craftsman .cr-rule{margin-left:auto;margin-right:auto} .craftsman .cr-photo{background-position:center 20%} .craftsman .cr-scrim{background:linear-gradient(180deg, rgba(20,14,6,.15) 0%, rgba(20,14,6,0) 32%, rgba(251,247,239,.92) 72%)} }
   .cta:focus-visible, .submit:focus-visible{outline:3px solid var(--gold); outline-offset:3px}
   @media (prefers-reduced-motion: reduce){ .hero::before{animation:none} .reveal{transition:none; opacity:1; transform:none} html{scroll-behavior:auto} }
 </style>
@@ -258,13 +257,11 @@
   <section class="craftsman">
     <div class="cr-photo"></div>
     <div class="cr-scrim"></div>
-    <div class="inner">
-      <div class="cr-txt reveal">
-        <div class="cr-k">The Craftsman</div>
-        <h2 class="cr-nm gleam">Thomas F. Woolf</h2>
-        <div class="cr-rule"></div>
-        <p class="cr-tag">The hands behind every heirloom &mdash; a real person, in New Jersey, who treats your family's history as if it were his own.</p>
-      </div>
+    <div class="cr-txt reveal">
+      <div class="cr-k">The Craftsman</div>
+      <h2 class="cr-nm gleam">Thomas F. Woolf</h2>
+      <div class="cr-rule"></div>
+      <p class="cr-tag">The hands behind every heirloom.</p>
     </div>
   </section>
 
