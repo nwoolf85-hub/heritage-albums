@@ -137,6 +137,20 @@
   .g p{font-size:16px; line-height:1.55; color:var(--ink-soft)}
   .price-note{text-align:center; margin-top:44px; font-size:20px; color:var(--ink-soft)}
   .price-note b{font-family:"Bodoni Moda",Didot,serif; color:var(--bronze); font-weight:600}
+  /* interactive expand cards */
+  .g{cursor:pointer; position:relative; transition:transform .28s ease, box-shadow .3s ease, border-color .3s ease, opacity .8s ease, background-color .55s ease, color .55s ease}
+  .g:hover{transform:translateY(-6px); border-color:var(--gold); box-shadow:0 22px 54px rgba(43,32,21,.28), inset 0 1px 0 var(--glass-spec)}
+  .g:focus-visible{outline:2px solid var(--gold); outline-offset:3px}
+  .g .g-more{list-style:none; text-align:left; max-height:0; overflow:hidden; opacity:0; margin-top:0;
+    transition:max-height .5s ease, opacity .4s ease, margin-top .4s ease}
+  .g.open .g-more{max-height:380px; opacity:1; margin-top:16px}
+  .g .g-more li{position:relative; padding:7px 0 7px 20px; font-size:14.5px; line-height:1.45; color:var(--ink-soft); border-top:1px solid var(--line)}
+  .g .g-more li:first-child{border-top:none}
+  .g .g-more li::before{content:"\203A"; position:absolute; left:3px; top:6px; color:var(--gold); font-weight:700}
+  .g .g-cue{display:inline-block; margin-top:14px; font-size:12.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--bronze-2); transition:color .2s}
+  .g .g-cue i{font-style:normal; display:inline-block; margin-left:5px; font-size:15px; line-height:1; transition:transform .3s ease}
+  .g:hover .g-cue{color:var(--bronze)}
+  .g.open .g-cue i{transform:rotate(45deg)}
 
   /* TRUST — the real person behind the promise */
   .trust{background:linear-gradient(180deg,var(--paper) 0%,var(--paper-2) 100%)}
@@ -338,12 +352,48 @@
       <div class="label reveal">What You Get Back</div>
       <h2 class="sec-title reveal">Not a folder of files. An heirloom.</h2>
       <div class="grid">
-        <div class="g reveal"><div class="ic">&#10024;</div><h4>Brought back to life</h4><p>Faded, cracked, water-damaged photos carefully restored by hand &mdash; color and detail revived.</p></div>
-        <div class="g reveal"><div class="ic">&#127909;</div><h4>A cinematic film</h4><p>Your restored memories woven into a heartfelt film, with music and narration in the family's own voice.</p></div>
-        <div class="g reveal"><div class="ic">&#128230;</div><h4>Every format</h4><p>Delivered however your family wants to hold it &mdash; a private cloud link, USB, DVD, Blu-ray, or a printed album.</p></div>
-        <div class="g reveal"><div class="ic">&#9729;</div><h4>Kept safe forever</h4><p>Archived in the cloud and backed up, so it can never be lost to a fire, a flood, or a failed drive again.</p></div>
-        <div class="g reveal"><div class="ic">&#9997;</div><h4>By one pair of hands</h4><p>A real craftsman touches every frame &mdash; never a warehouse, never a conveyor belt, never automated.</p></div>
-        <div class="g reveal"><div class="ic">&#128248;</div><h4>Professional care</h4><p>Captured on professional archival equipment, including some of the last great machines ever made.</p></div>
+        <div class="g reveal"><div class="ic">&#10024;</div><h4>Brought back to life</h4><p>Faded, cracked, water-damaged photos carefully restored by hand &mdash; color and detail revived.</p>
+          <ul class="g-more">
+            <li>Tears, creases &amp; water stains repaired by hand</li>
+            <li>Faded, yellowed color rebuilt to its original warmth</li>
+            <li>Torn corners &amp; damaged faces reconstructed</li>
+            <li>Worked one photo at a time &mdash; never a batch filter</li>
+          </ul><span class="g-cue">Details <i>+</i></span></div>
+        <div class="g reveal"><div class="ic">&#127909;</div><h4>A cinematic film</h4><p>Your restored memories woven into a heartfelt film, with music and narration in the family's own voice.</p>
+          <ul class="g-more">
+            <li>Sequenced into a real story, not a slideshow</li>
+            <li>Scored with music chosen for your family's era</li>
+            <li>Optional narration in your own family's voices</li>
+            <li>Titles &amp; gentle motion that bring stills to life</li>
+          </ul><span class="g-cue">Details <i>+</i></span></div>
+        <div class="g reveal"><div class="ic">&#128230;</div><h4>Every format</h4><p>Delivered however your family wants to hold it &mdash; a private cloud link, USB, DVD, Blu-ray, or a printed album.</p>
+          <ul class="g-more">
+            <li>A private streaming link for the whole family</li>
+            <li>USB, DVD, or Blu-ray for the shelf</li>
+            <li>An optional printed companion album</li>
+            <li>High-resolution originals, always yours to keep</li>
+          </ul><span class="g-cue">Details <i>+</i></span></div>
+        <div class="g reveal"><div class="ic">&#9729;</div><h4>Kept safe forever</h4><p>Archived in the cloud and backed up, so it can never be lost to a fire, a flood, or a failed drive again.</p>
+          <ul class="g-more">
+            <li>Backed up across multiple secure cloud copies</li>
+            <li>Safe from fire, flood &amp; failed hard drives</li>
+            <li>Re-downloadable anytime, for generations</li>
+            <li>Your original photos returned to you unharmed</li>
+          </ul><span class="g-cue">Details <i>+</i></span></div>
+        <div class="g reveal"><div class="ic">&#9997;</div><h4>By one pair of hands</h4><p>A real craftsman touches every frame &mdash; never a warehouse, never a conveyor belt, never automated.</p>
+          <ul class="g-more">
+            <li>One craftsman touches every single frame</li>
+            <li>Your photos never leave careful, local hands</li>
+            <li>No overseas warehouse, no assembly line</li>
+            <li>You always know exactly who has your memories</li>
+          </ul><span class="g-cue">Details <i>+</i></span></div>
+        <div class="g reveal"><div class="ic">&#128248;</div><h4>Professional care</h4><p>Captured on professional archival equipment, including some of the last great machines ever made.</p>
+          <ul class="g-more">
+            <li>Archival-grade scanners, not phone snapshots</li>
+            <li>Some of the last great film &amp; slide machines ever built</li>
+            <li>Color-calibrated so every scan is true to life</li>
+            <li>Handled with museum-level, cotton-glove care</li>
+          </ul><span class="g-cue">Details <i>+</i></span></div>
       </div>
       <p class="price-note reveal">Heirloom films <b>from $950</b> &mdash; tailored to your family's collection, up to the complete legacy.</p>
     </div>
@@ -433,8 +483,15 @@
       syncMeta();
       if(btn)btn.addEventListener('click',function(){var t=root.getAttribute('data-theme')==='dark'?'light':'dark';root.setAttribute('data-theme',t);try{localStorage.setItem('ha-theme',t);}catch(e){}syncMeta();});
     })();
-    const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in'); io.unobserve(e.target);}});},{threshold:.12});
+    const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in'); io.unobserve(e.target); setTimeout(function(t){t.style.transitionDelay='0s';},950,e.target);}});},{threshold:.12});
     document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3*80)+'ms'; io.observe(el);});
+    // interactive expand cards
+    document.querySelectorAll('.included .g').forEach(function(card){
+      card.setAttribute('tabindex','0'); card.setAttribute('role','button'); card.setAttribute('aria-expanded','false');
+      function toggle(){var open=card.classList.toggle('open'); card.setAttribute('aria-expanded',open?'true':'false');}
+      card.addEventListener('click',toggle);
+      card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
+    });
     // respect reduced motion for the showcase film
     (function(){var v=document.getElementById('showcaseVideo'); if(v && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){ v.removeAttribute('autoplay'); try{v.pause();}catch(e){} }})();
 
