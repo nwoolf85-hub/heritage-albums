@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Share Heritage Albums</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#7A4E22">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,600;1,6..96,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#FBF7EF;--paper-2:#F1E7D2;--card:#FEFCF7;--ink:#2B2521;--ink-soft:#4A4038;--muted:#9A8A70;
+    --bronze:#7A4E22;--bronze-2:#B4924F;--gold:#C9A24B;--line:#E0D2B4;--deep:#241A0F;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--paper-2);color:var(--ink);font-family:"EB Garamond",Georgia,serif;font-size:19px;line-height:1.6;-webkit-font-smoothing:antialiased;padding:36px 16px 60px}
+  .kit{max-width:720px;margin:0 auto}
+  h1,h2{font-family:"Bodoni Moda",Didot,serif;font-weight:600;line-height:1.1}
+  .head{text-align:center;margin-bottom:14px}
+  .wordmark{font-family:"Bodoni Moda",serif;font-size:14px;letter-spacing:.4em;text-transform:uppercase;color:var(--bronze-2)}
+  h1{font-size:clamp(38px,6vw,56px);margin-top:12px}
+  h1 .em{font-style:italic;color:var(--bronze)}
+  .sub{margin:14px auto 0;font-size:20px;color:var(--ink-soft);font-style:italic;max-width:520px}
+  .block{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:30px 30px;margin-top:22px;box-shadow:0 14px 40px rgba(122,78,34,.08)}
+  .step{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+  .num{flex:none;width:34px;height:34px;border-radius:50%;background:var(--bronze);color:var(--paper);font-family:"Bodoni Moda",serif;font-size:18px;display:flex;align-items:center;justify-content:center}
+  .block h2{font-size:24px;color:var(--ink)}
+  .lead{font-size:17px;color:var(--ink-soft);margin-bottom:18px}
+  /* link row */
+  .linkrow{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .linkbox{flex:1 1 260px;min-width:0;background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:15px 16px;font-size:17px;color:var(--bronze);word-break:break-all}
+  .btn{flex:none;cursor:pointer;border:none;background:var(--bronze);color:var(--paper);font-family:"EB Garamond",serif;font-size:16px;
+    letter-spacing:.06em;text-transform:uppercase;padding:15px 24px;border-radius:8px;transition:transform .18s,background .2s;box-shadow:0 8px 20px rgba(122,78,34,.2)}
+  .btn:hover{transform:translateY(-1px);background:#8A5827}
+  .btn:active{transform:translateY(0)}
+  .btn.copied{background:var(--gold);color:var(--deep)}
+  .btn.small{padding:11px 20px;font-size:14.5px}
+  /* qr */
+  .qrwrap{text-align:center}
+  .qrwrap img{width:230px;height:230px;border-radius:12px;border:1px solid var(--line);background:#fff;padding:10px}
+  .qrcap{margin-top:14px;font-size:16px;color:var(--ink-soft);font-style:italic}
+  /* messages */
+  .msg{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:20px 20px;margin-top:16px}
+  .msg .tag{font-family:"Bodoni Moda",serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--bronze-2);margin-bottom:10px}
+  .msg .txt{font-size:16.5px;color:var(--ink);line-height:1.55;white-space:pre-wrap}
+  .msg .btnrow{margin-top:14px}
+  .foot{text-align:center;margin-top:30px;font-size:16px;color:var(--muted);font-style:italic;line-height:1.5}
+  .foot b{color:var(--bronze);font-weight:400;font-style:normal}
+  .backhome{display:inline-block;margin-top:18px;font-style:italic;color:var(--bronze);text-decoration:none;font-size:15px;border-bottom:1px solid var(--line);padding-bottom:2px}
+  @media(max-width:600px){.block{padding:24px 20px}.btn{width:100%}.linkbox{flex-basis:100%}}
+</style>
+</head>
+<body>
+  <div class="kit">
+    <div class="head">
+      <div class="wordmark">Heritage Albums</div>
+      <h1>Share it in <span class="em">one tap.</span></h1>
+      <p class="sub">Everything you need to put this in front of someone &mdash; all in one place.</p>
+    </div>
+
+    <div class="block">
+      <div class="step"><div class="num">1</div><h2>The link</h2></div>
+      <p class="lead">Send this to anyone with old photos, slides, or home movies.</p>
+      <div class="linkrow">
+        <div class="linkbox" id="siteUrl">https://nwoolf85-hub.github.io/heritage-albums/</div>
+        <button class="btn" data-copy="siteUrl">Copy link</button>
+      </div>
+    </div>
+
+    <div class="block qrwrap">
+      <div class="step" style="justify-content:center"><div class="num">2</div><h2>Or the QR code</h2></div>
+      <img src="share-qr.png" alt="QR code linking to Heritage Albums">
+      <p class="qrcap">Have them point a phone camera at this &mdash; the site opens right up.</p>
+    </div>
+
+    <div class="block">
+      <div class="step"><div class="num">3</div><h2>Ready-to-send messages</h2></div>
+      <p class="lead">Copy one, paste it into a text or email, change the name, and send. Edit anything you like &mdash; it's yours.</p>
+
+      <div class="msg">
+        <div class="tag">A quick text</div>
+        <div class="txt" id="msgText">Hi &mdash; my son and I just launched something I'm really proud of. We bring old family photos and home movies back to life and turn them into a keepsake film. Thought of you. Take a look: https://nwoolf85-hub.github.io/heritage-albums/</div>
+        <div class="btnrow"><button class="btn small" data-copy="msgText">Copy this text</button></div>
+      </div>
+
+      <div class="msg">
+        <div class="tag">A warm email</div>
+        <div class="txt" id="msgEmail">Subject: Something I've been working on
+
+Hi ______,
+
+For years, people have asked me to help with their old photographs and family films. My son Neal and I finally built it into a real studio &mdash; we restore faded photos by hand and turn a family's whole history into a film they keep forever.
+
+I thought of you and your family's history. Take a look when you have a minute:
+
+https://nwoolf85-hub.github.io/heritage-albums/
+
+The first conversation is always free &mdash; I'd be glad to talk through whatever you've got.
+
+Warmly,
+Tom</div>
+        <div class="btnrow"><button class="btn small" data-copy="msgEmail">Copy this email</button></div>
+      </div>
+    </div>
+
+    <p class="foot">Text or email this to anyone who has boxes of old photos, slides, or home movies.<br>That's the whole job &mdash; <b>the site does the rest.</b></p>
+    <div style="text-align:center"><a class="backhome" href="index.html">&larr; Back to the site</a></div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.btn[data-copy]').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        var el=document.getElementById(btn.getAttribute('data-copy'));
+        var text=el.innerText.replace(/ /g,' ');
+        function done(){var o=btn.textContent;btn.classList.add('copied');btn.textContent='Copied ✓';setTimeout(function(){btn.classList.remove('copied');btn.textContent=o;},1800);}
+        if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,function(){fallback(text,done);});}
+        else{fallback(text,done);}
+      });
+    });
+    function fallback(text,cb){var t=document.createElement('textarea');t.value=text;t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(t);cb();}
+  </script>
+</body>
+</html>

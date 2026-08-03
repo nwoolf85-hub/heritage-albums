@@ -122,7 +122,39 @@
   .chips{display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:40px}
   .chip{background:var(--glass); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
     border:1px solid var(--glass-brd); border-radius:40px; padding:12px 26px; font-size:17px; color:var(--ink-soft); box-shadow:0 6px 18px rgba(122,78,34,.08), inset 0 1px 0 var(--glass-spec)}
-  .chip b{color:var(--bronze); font-weight:400; margin-right:5px}
+  .chip b{color:var(--bronze); font-weight:400; margin-right:5px; transition:transform .3s ease}
+  /* interactive chips */
+  .chip{cursor:pointer; font-family:inherit; -webkit-appearance:none; appearance:none;
+    transition:transform .3s ease, background-color .3s ease, color .3s ease, border-color .3s ease, box-shadow .3s ease}
+  .chip:hover{transform:translateY(-2px); box-shadow:0 12px 26px rgba(122,78,34,.16), inset 0 1px 0 var(--glass-spec)}
+  .chip:focus-visible{outline:none; box-shadow:0 0 0 3px var(--bronze-2), 0 6px 18px rgba(122,78,34,.08)}
+  .chip[aria-expanded="true"]{background:var(--bronze); color:var(--card); border-color:var(--bronze)}
+  .chip[aria-expanded="true"] b{color:var(--card); transform:rotate(90deg)}
+  .rescue-sub{text-align:center; color:var(--muted); font-size:17px; margin-top:16px}
+  .rescue-detail{max-width:660px; margin:26px auto 0}
+  .rescue-detail[hidden]{display:none}
+  .rd-card{background:var(--card); border:1px solid var(--line); border-radius:16px;
+    padding:26px 30px; text-align:center; box-shadow:0 14px 40px rgba(122,78,34,.10)}
+  .rd-title{font-size:clamp(21px,3vw,27px); margin-bottom:10px}
+  .rd-body{color:var(--ink-soft); font-size:17.5px; line-height:1.7; max-width:52ch; margin:0 auto}
+  .rd-cta{display:inline-block; margin-top:18px; color:var(--bronze); font-size:15px; letter-spacing:.02em;
+    text-decoration:none; border-bottom:1px solid var(--line); padding-bottom:2px; transition:color .3s ease, border-color .3s ease}
+  .rd-cta:hover{color:var(--cta-hover); border-color:var(--bronze)}
+  .rd-anim{animation:rdIn .5s cubic-bezier(.2,.8,.2,1)}
+  @keyframes rdIn{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:none}}
+  .rescue-how{display:grid; grid-template-columns:1fr; gap:22px; max-width:900px; margin:52px auto 0}
+  @media(min-width:720px){.rescue-how{grid-template-columns:repeat(3,1fr); align-items:start; gap:32px}}
+  .rh-step{display:flex; gap:15px; text-align:left}
+  .rh-num{flex:none; width:36px; height:36px; border-radius:50%; display:grid; place-items:center;
+    background:var(--bronze); color:var(--card); font-family:"Playfair Display",Georgia,serif; font-size:18px; line-height:1}
+  .rh-step b{display:block; margin-bottom:4px; font-size:17px}
+  .rh-step p{font-size:15px; color:var(--muted); line-height:1.6}
+  .rh-cta-wrap{text-align:center; margin-top:40px}
+  .rh-cta{display:inline-block; background:var(--bronze); color:var(--card); font-size:17px;
+    padding:15px 34px; border-radius:40px; text-decoration:none; box-shadow:0 10px 26px rgba(122,78,34,.22);
+    transition:background-color .3s ease, transform .3s ease}
+  .rh-cta:hover{background:var(--cta-hover); transform:translateY(-2px)}
+  @media(prefers-reduced-motion:reduce){ .rd-anim{animation:none} .chip:hover,.rh-cta:hover{transform:none} }
 
   /* INCLUDED */
   .included{background:
@@ -137,6 +169,9 @@
   .g p{font-size:16px; line-height:1.55; color:var(--ink-soft)}
   .price-note{text-align:center; margin-top:44px; font-size:20px; color:var(--ink-soft)}
   .price-note b{font-family:"Bodoni Moda",Didot,serif; color:var(--bronze); font-weight:600}
+  .compare-link{text-align:center; margin-top:14px}
+  .compare-link a{font-style:italic; color:var(--bronze); font-size:16.5px; text-decoration:none; border-bottom:1px solid var(--line); padding-bottom:2px; transition:border-color .2s}
+  .compare-link a:hover{border-color:var(--bronze-2)}
   /* interactive expand cards */
   .g{cursor:pointer; position:relative; transition:transform .28s ease, box-shadow .3s ease, border-color .3s ease, opacity .8s ease, background-color .55s ease, color .55s ease}
   .g:hover{transform:translateY(-6px); border-color:var(--gold); box-shadow:0 22px 54px rgba(43,32,21,.28), inset 0 1px 0 var(--glass-spec)}
@@ -336,13 +371,39 @@
     <div class="wrap">
       <div class="label reveal">What We Rescue</div>
       <h2 class="sec-title reveal">Every format your memories are trapped in.</h2>
+      <p class="rescue-sub reveal">Tap the one gathering dust in your closet &mdash; we&rsquo;ll show you exactly how it comes back to life.</p>
       <div class="chips reveal">
-        <div class="chip"><b>&#9656;</b> Old photographs</div>
-        <div class="chip"><b>&#9656;</b> Slides &amp; negatives</div>
-        <div class="chip"><b>&#9656;</b> VHS &amp; camcorder tapes</div>
-        <div class="chip"><b>&#9656;</b> DVDs</div>
-        <div class="chip"><b>&#9656;</b> Film reels</div>
-        <div class="chip"><b>&#9656;</b> Home movies</div>
+        <button class="chip" type="button" data-fmt="photos" aria-expanded="false"><b>&#9656;</b> Old photographs</button>
+        <button class="chip" type="button" data-fmt="slides" aria-expanded="false"><b>&#9656;</b> Slides &amp; negatives</button>
+        <button class="chip" type="button" data-fmt="tapes" aria-expanded="false"><b>&#9656;</b> VHS &amp; camcorder tapes</button>
+        <button class="chip" type="button" data-fmt="dvds" aria-expanded="false"><b>&#9656;</b> DVDs</button>
+        <button class="chip" type="button" data-fmt="reels" aria-expanded="false"><b>&#9656;</b> Film reels</button>
+        <button class="chip" type="button" data-fmt="movies" aria-expanded="false"><b>&#9656;</b> Home movies</button>
+      </div>
+
+      <div class="rescue-detail" id="rescueDetail" hidden aria-live="polite">
+        <div class="rd-card">
+          <h3 class="rd-title"></h3>
+          <p class="rd-body"></p>
+        </div>
+      </div>
+
+      <div class="rescue-how reveal">
+        <div class="rh-step">
+          <span class="rh-num">1</span>
+          <div><b>Tell us what you have</b><p>A quick note or a phone call. No need to count every photo &mdash; a rough idea of the box, the drawer, the reels is plenty.</p></div>
+        </div>
+        <div class="rh-step">
+          <span class="rh-num">2</span>
+          <div><b>We come to you, or send a padded kit</b><p>In Austin we collect in person. Anywhere else, a cushioned, prepaid kit arrives at your door. Nothing fragile ever ships blind.</p></div>
+        </div>
+        <div class="rh-step">
+          <span class="rh-num">3</span>
+          <div><b>You pack it &mdash; we do the rest</b><p>Every item is inventoried on arrival, handled by hand, and returned to you unharmed &mdash; alongside your finished albums and films.</p></div>
+        </div>
+      </div>
+      <div class="rh-cta-wrap reveal">
+        <a class="rh-cta" href="#inquire">Start with a free conversation &#8594;</a>
       </div>
     </div>
   </section>
@@ -396,6 +457,7 @@
           </ul><span class="g-cue">Details <i>+</i></span></div>
       </div>
       <p class="price-note reveal">Heirloom films <b>from $950</b> &mdash; tailored to your family's collection, up to the complete legacy.</p>
+      <p class="compare-link reveal"><a href="compare-value.html">See exactly what you get &mdash; and what it's worth &rarr;</a></p>
     </div>
   </section>
 
@@ -517,6 +579,42 @@
       const body=`Name: ${g('name')}%0D%0AEmail: ${g('email')}%0D%0APhone: ${g('phone')}%0D%0AHas: ${g('have')}%0D%0A%0D%0A${g('msg')}`;
       window.location.href=`mailto:nwoolf85+heritage@gmail.com?subject=Heritage%20Albums%20inquiry%20from%20${g('name')}&body=${body}`;
     });
+
+    /* ---- What We Rescue: interactive formats ---- */
+    (function(){
+      var data={
+        photos:{t:"Old photographs",b:"Loose prints, sticky-page albums, the shoebox under the bed. Hand them over exactly as they are — shuffled is fine. We inventory and scan every one at archival resolution, then return each original to you unharmed.",opt:"Boxes of old photographs"},
+        slides:{t:"Slides & negatives",b:"Kodachrome carousels and strips of negatives no one has a projector for anymore. We handle them with cotton gloves and dust-free scanning — and you finally get to see them again.",opt:"Slides & negatives"},
+        tapes:{t:"VHS & camcorder tapes",b:"VHS, VHS-C, Hi8, Video8, MiniDV. Magnetic tape is on a clock, fading a little more every year. We play each one back in real time on calibrated decks before it slips away for good.",opt:"VHS / camcorder tapes"},
+        dvds:{t:"DVDs",b:"Home-burned discs and store-bought DVDs quietly rot too. We lift the video off cleanly and preserve it in formats built to actually last.",opt:"DVDs or film reels"},
+        reels:{t:"Film reels",b:"8mm, Super 8, 16mm. We scan frame by frame — no hot projector bulb, no scratches — so the reel your grandfather shot plays like the day it was taken.",opt:"DVDs or film reels"},
+        movies:{t:"Home movies",b:"Whatever format the family movies are trapped on, we speak it. If it recorded a moment — a birthday, a first step, a wedding toast — we can bring it back.",opt:"A mix of everything"}
+      };
+      var chips=[].slice.call(document.querySelectorAll('.chip[data-fmt]'));
+      var detail=document.getElementById('rescueDetail');
+      if(!chips.length||!detail) return;
+      var card=detail.querySelector('.rd-card');
+      var titleEl=detail.querySelector('.rd-title'), bodyEl=detail.querySelector('.rd-body');
+      var cta=document.createElement('a'); cta.className='rd-cta'; cta.href='#inquire'; card.appendChild(cta);
+      var current=null;
+      function show(key,chip){
+        var d=data[key];
+        chips.forEach(function(c){ c.setAttribute('aria-expanded', c===chip?'true':'false'); });
+        titleEl.textContent=d.t; bodyEl.textContent=d.b;
+        cta.textContent='Start with your '+d.t.toLowerCase()+' →';
+        cta.onclick=function(){ try{ var s=document.getElementById('have'); if(s){ for(var i=0;i<s.options.length;i++){ if(s.options[i].text===d.opt){ s.selectedIndex=i; break; } } } }catch(e){} };
+        detail.hidden=false;
+        detail.classList.remove('rd-anim'); void detail.offsetWidth; detail.classList.add('rd-anim');
+        current=key;
+      }
+      chips.forEach(function(c){
+        c.addEventListener('click',function(){
+          if(current===c.getAttribute('data-fmt')){ c.setAttribute('aria-expanded','false'); detail.hidden=true; current=null; return; }
+          show(c.getAttribute('data-fmt'),c);
+        });
+      });
+      show('photos',chips[0]); /* alive on load so the section reads as interactive */
+    })();
   </script>
 </body>
 </html>
