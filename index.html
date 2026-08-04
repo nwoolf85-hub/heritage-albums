@@ -3,7 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Heritage Albums — Your Family's Story, Kept Forever</title>
+<title>Heritage Albums — Photo Restoration & Legacy Films | New Jersey</title>
+<link rel="canonical" href="https://nwoolf85-hub.github.io/heritage-albums/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Heritage Albums","description":"Family photo and film legacy-restoration studio in New Jersey. We restore old photographs, slides, VHS and camcorder tapes by hand and produce cinematic keepsake films.","url":"https://nwoolf85-hub.github.io/heritage-albums/","image":"https://nwoolf85-hub.github.io/heritage-albums/og-image.jpg","areaServed":{"@type":"State","name":"New Jersey"},"founder":[{"@type":"Person","name":"Thomas Woolf"},{"@type":"Person","name":"Neal Woolf"}],"priceRange":"$950-$12000","slogan":"Your family's story, kept forever.","knowsAbout":["photo restoration","VHS transfer","film transfer","slide scanning","photo digitization","legacy films"]}
+</script>
 <meta name="description" content="Heritage Albums restores your family's old photos, slides, VHS and camcorder tapes by hand and turns them into a cinematic keepsake film — kept safe forever. A real New Jersey studio, never a mail-in warehouse.">
 <meta name="theme-color" content="#7A4E22">
 <meta property="og:title" content="Heritage Albums — Your Family's Story, Kept Forever">
@@ -169,9 +173,19 @@
   .g p{font-size:16px; line-height:1.55; color:var(--ink-soft)}
   .price-note{text-align:center; margin-top:44px; font-size:20px; color:var(--ink-soft)}
   .price-note b{font-family:"Bodoni Moda",Didot,serif; color:var(--bronze); font-weight:600}
-  .compare-link{text-align:center; margin-top:14px}
+  .compare-link{text-align:center; margin-top:24px}
   .compare-link a{font-style:italic; color:var(--bronze); font-size:16.5px; text-decoration:none; border-bottom:1px solid var(--line); padding-bottom:2px; transition:border-color .2s}
   .compare-link a:hover{border-color:var(--bronze-2)}
+  /* PRICING TIERS */
+  .tiers{background:linear-gradient(180deg, var(--paper-2) 0%, var(--paper) 100%)}
+  .tier-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:44px}
+  .tier{background:var(--glass); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px); border:1px solid var(--glass-brd);
+    border-radius:8px; padding:30px 22px; text-align:center; box-shadow:var(--glass-sh), inset 0 1px 0 var(--glass-spec); display:flex; flex-direction:column}
+  .tier-name{font-family:"Bodoni Moda",Didot,serif; font-size:13px; letter-spacing:.28em; text-transform:uppercase; color:var(--bronze-2); margin-bottom:12px}
+  .tier-price{font-family:"Bodoni Moda",Didot,serif; font-weight:600; font-size:33px; color:var(--bronze); margin-bottom:14px; font-variant-numeric:tabular-nums; line-height:1}
+  .tier p{font-size:15.5px; line-height:1.5; color:var(--ink-soft)}
+  @media(max-width:820px){ .tier-grid{grid-template-columns:1fr 1fr} }
+  @media(max-width:520px){ .tier-grid{grid-template-columns:1fr; max-width:360px; margin-left:auto; margin-right:auto} }
   /* interactive expand cards */
   .g{cursor:pointer; position:relative; transition:transform .28s ease, box-shadow .3s ease, border-color .3s ease, opacity .8s ease, background-color .55s ease, color .55s ease}
   .g:hover{transform:translateY(-6px); border-color:var(--gold); box-shadow:0 22px 54px rgba(43,32,21,.28), inset 0 1px 0 var(--glass-spec)}
@@ -456,8 +470,7 @@
             <li>Handled with museum-level, cotton-glove care</li>
           </ul><span class="g-cue">Details <i>+</i></span></div>
       </div>
-      <p class="price-note reveal">Heirloom films <b>from $950</b> &mdash; tailored to your family's collection, up to the complete legacy.</p>
-      <p class="compare-link reveal"><a href="compare-value.html">See exactly what you get &mdash; and what it's worth &rarr;</a></p>
+      <p class="price-note reveal">Every film is tailored to your family's collection &mdash; from a single box to a complete family legacy.</p>
     </div>
   </section>
 
@@ -478,6 +491,37 @@
       </div>
       <p class="film-cap reveal">Restored and produced from a box of old clippings, reviews, and photographs &mdash; her whole stage career, kept forever.</p>
       <p class="close-line reveal">This is the whole idea. Not scanning &mdash; <b>peace of mind.</b> An investment in keeping your legacy alive, forever.</p>
+    </div>
+  </section>
+
+  <section class="tiers">
+    <div class="wrap">
+      <div class="label reveal">The Collections</div>
+      <h2 class="sec-title reveal">Find your family's scale.</h2>
+      <p class="sec-sub reveal">Every collection is different, so every film is tailored. These are the starting points &mdash; from a single box to a complete family legacy.</p>
+      <div class="tier-grid">
+        <div class="tier reveal">
+          <div class="tier-name">Keepsake</div>
+          <div class="tier-price">from $950</div>
+          <p>A single tape or a small box of photographs &mdash; restored and turned into a short keepsake film.</p>
+        </div>
+        <div class="tier reveal">
+          <div class="tier-name">Heirloom</div>
+          <div class="tier-price">from $2,400</div>
+          <p>Your family's core collection &mdash; the photos and reels that matter most &mdash; woven into one heartfelt film.</p>
+        </div>
+        <div class="tier reveal">
+          <div class="tier-name">Legacy</div>
+          <div class="tier-price">from $4,800</div>
+          <p>A fuller life's story &mdash; many years of photographs and home movies, fully restored and produced.</p>
+        </div>
+        <div class="tier reveal">
+          <div class="tier-name">Eternal</div>
+          <div class="tier-price">from $12,000</div>
+          <p>The complete family legacy &mdash; every box, every format &mdash; restored, produced, and kept safe forever.</p>
+        </div>
+      </div>
+      <p class="compare-link reveal"><a href="compare-value.html">See exactly what's included &mdash; and how it compares &rarr;</a></p>
     </div>
   </section>
 

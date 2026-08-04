@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nwoolf85-hub.github.io/heritage-albums/sitemap.xml
