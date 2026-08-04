@@ -84,7 +84,7 @@
   /* before/after reveal component */
   .photo-frame{background:var(--card); padding:14px; border-radius:6px; border:1px solid var(--line); box-shadow:0 34px 74px rgba(43,32,21,.26); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px)}
   .reveal-photo{position:relative; width:100%; aspect-ratio:960/740; overflow:hidden; border-radius:3px;
-    user-select:none; -webkit-user-select:none; touch-action:none; cursor:ew-resize}
+    user-select:none; -webkit-user-select:none; touch-action:pan-y; cursor:ew-resize}
   .ba-img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block}
   .ba-after{position:absolute; inset:0; clip-path:inset(0 50% 0 0); will-change:clip-path}
   .ba-after img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block}
@@ -146,7 +146,7 @@
   @media(min-width:720px){.rescue-how{grid-template-columns:repeat(3,1fr); align-items:start; gap:32px}}
   .rh-step{display:flex; gap:15px; text-align:left}
   .rh-num{flex:none; width:36px; height:36px; border-radius:50%; display:grid; place-items:center;
-    background:var(--bronze); color:var(--card); font-family:"Playfair Display",Georgia,serif; font-size:18px; line-height:1}
+    background:var(--bronze); color:var(--card); font-family:"Bodoni Moda",Didot,serif; font-size:18px; line-height:1}
   .rh-step b{display:block; margin-bottom:4px; font-size:17px}
   .rh-step p{font-size:15px; color:var(--muted); line-height:1.6}
   .rh-cta-wrap{text-align:center; margin-top:40px}
@@ -395,11 +395,11 @@
         </div>
         <div class="rh-step">
           <span class="rh-num">2</span>
-          <div><b>We come to you, or send a padded kit</b><p>In Austin we collect in person. Anywhere else, a cushioned, prepaid kit arrives at your door. Nothing fragile ever ships blind.</p></div>
+          <div><b>We come to you, in person</b><p>Right here in New Jersey, we meet you at home and look through what you have together &mdash; then take careful custody of your originals. Nothing is ever shipped off to a far-away warehouse.</p></div>
         </div>
         <div class="rh-step">
           <span class="rh-num">3</span>
-          <div><b>You pack it &mdash; we do the rest</b><p>Every item is inventoried on arrival, handled by hand, and returned to you unharmed &mdash; alongside your finished albums and films.</p></div>
+          <div><b>We handle everything by hand</b><p>Every item is inventoried on arrival, restored by hand, and returned to you unharmed &mdash; alongside your finished album and film.</p></div>
         </div>
       </div>
       <div class="rh-cta-wrap reveal">
@@ -566,7 +566,7 @@
         requestAnimationFrame(function fr(ts){ if(!t0)t0=ts; var p=Math.min(1,(ts-t0)/dur); var e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2; set(start+(target-start)*e); if(p<1)requestAnimationFrame(fr); }); }
       var dragging=false;
       function pos(e){ var r=ba.getBoundingClientRect(); var cx=e.touches?e.touches[0].clientX:e.clientX; set((cx-r.left)/r.width*100); }
-      ba.addEventListener('pointerdown',function(e){dragging=true; try{ba.setPointerCapture(e.pointerId);}catch(_){} pos(e); e.preventDefault();});
+      ba.addEventListener('pointerdown',function(e){dragging=true; try{ba.setPointerCapture(e.pointerId);}catch(_){} pos(e);});
       ba.addEventListener('pointermove',function(e){ if(dragging){ pos(e); } });
       window.addEventListener('pointerup',function(){dragging=false;});
       set(50);
